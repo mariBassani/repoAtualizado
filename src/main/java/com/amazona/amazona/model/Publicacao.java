@@ -16,8 +16,8 @@ public class Publicacao {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idPublicacao;
     private String data;
-    private String titulo;
-    private String descricao;
+    private String url;
+    private String desc;
 
     @ManyToOne
     @JsonIgnore
@@ -25,11 +25,11 @@ public class Publicacao {
     private Usuaria usuaria;
 
 
-    public Publicacao(Long idPublicacao, String data, String titulo, String descricao) {
+    public Publicacao(Long idPublicacao, String data, String url, String desc) {
         this.idPublicacao = idPublicacao;
         this.data = data;
-        this.titulo = titulo;
-        this.descricao = descricao;
+        this.url = url;
+        this.desc = desc;
     }
 
     public Long getIdPublicacao() {
@@ -48,20 +48,20 @@ public class Publicacao {
         this.data = data;
     }
 
-    public String getTitulo() {
-        return titulo;
+    public String getUrl() {
+        return url;
     }
 
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
+    public void setUrl(String url) {
+        this.url = url;
     }
 
-    public String getDescricao() {
-        return descricao;
+    public String getDesc() {
+        return desc;
     }
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
+    public void setDesc(String desc) {
+        this.desc = desc;
     }
 
     
