@@ -13,6 +13,9 @@ public class Usuaria {
     private int idade;
     private boolean assinante;
 
+    public Usuaria() {
+    }
+
     @OneToMany(mappedBy = "usuaria", fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     private List<Publicacao> idPublicacao;
 
@@ -23,9 +26,6 @@ public class Usuaria {
         this.idade = idade;
         this.assinante = assinante;
 
-    }
-
-    public Usuaria() {
     }
 
     public Long getIdUsuaria() {

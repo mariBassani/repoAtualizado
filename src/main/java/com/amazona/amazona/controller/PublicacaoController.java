@@ -23,13 +23,18 @@ public class PublicacaoController {
     @Autowired
     PublicacaoRepository publicacaoRepository;
 
+    //@GetMapping
+    //public List<Publicacao> getAllPublicacoes() {
+    //    return StreamSupport.stream(publicacaoRepository
+    //            .findAll()
+    //            .spliterator(), false)
+    //            .collect(Collectors.toList());
+    //}
     @GetMapping
-    public List<Publicacao> getPublicacoes() {
-        return StreamSupport.stream(publicacaoRepository
-                .findAll()
-                .spliterator(), false)
-                .collect(Collectors.toList());
+    public List<Publicacao> getAllPublicacoes() {
+        return (List<Publicacao>) publicacaoRepository.findAll();
     }
+
 
     @GetMapping("/{id}")
     public Publicacao getPublicacaoById(@PathVariable Long id) {

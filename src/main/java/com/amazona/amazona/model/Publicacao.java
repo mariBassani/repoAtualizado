@@ -1,5 +1,8 @@
 package com.amazona.amazona.model;
 
+//import java.util.List;
+
+//import jakarta.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -9,28 +12,36 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "publicacao") //para garantir que a tabela vai ser criada com esse nome
 public class Publicacao {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idPublicacao;
+    //private Long usuariaFk;
     private String data;
     private String url;
     private String desc;
 
+    public Publicacao(){
+        
+    }
+
     @ManyToOne
-    @JsonIgnore
+    //@JsonIgnore
     @JoinColumn(name = "usuariaFk")
     private Usuaria usuaria;
 
 
     public Publicacao(Long idPublicacao, String data, String url, String desc) {
-        this.idPublicacao = idPublicacao;
         this.data = data;
         this.url = url;
         this.desc = desc;
     }
+
+   
 
     public Long getIdPublicacao() {
         return idPublicacao;
@@ -62,6 +73,12 @@ public class Publicacao {
 
     public void setDesc(String desc) {
         this.desc = desc;
+    }
+
+    @Override
+    public String toString() {
+        return "Publicacao [idPublicacao=" + idPublicacao + ", data=" + data + ", url=" + url + ", desc=" + desc
+                + ", usuaria=" + usuaria + "]";
     }
 
     
