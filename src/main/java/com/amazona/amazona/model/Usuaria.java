@@ -14,8 +14,8 @@ public class Usuaria {
     public Usuaria() {
     }
 
-    // @OneToMany(mappedBy = "usuaria", fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
-    // private List<Publicacao> idPublicacao;
+    @OneToMany(mappedBy = "usuaria", fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    private List<Publicacao> idPublicacao;
 
     public Usuaria(Long idUsuaria, String nome, String cpf, int idade, boolean assinante) {
         this.idUsuaria = idUsuaria;
