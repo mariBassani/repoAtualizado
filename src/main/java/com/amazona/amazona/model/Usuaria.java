@@ -1,6 +1,4 @@
 package com.amazona.amazona.model;
-import java.util.List;
-
 import jakarta.persistence.*;
 
 @Entity
@@ -16,8 +14,8 @@ public class Usuaria {
     public Usuaria() {
     }
 
-    @OneToMany(mappedBy = "usuaria", fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
-    private List<Publicacao> idPublicacao;
+    // @OneToMany(mappedBy = "usuaria", fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    // private List<Publicacao> idPublicacao;
 
     public Usuaria(Long idUsuaria, String nome, String cpf, int idade, boolean assinante) {
         this.idUsuaria = idUsuaria;

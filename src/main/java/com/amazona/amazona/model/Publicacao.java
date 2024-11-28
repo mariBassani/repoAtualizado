@@ -1,44 +1,34 @@
 package com.amazona.amazona.model;
+import org.antlr.v4.runtime.misc.NotNull;
 
-//import java.util.List;
+import jakarta.persistence.*;
 
-//import jakarta.persistence.*;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "publicacao") //para garantir que a tabela vai ser criada com esse nome
 public class Publicacao {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idPublicacao;
-    //private Long usuariaFk;
     private String data;
+
+    @Column(nullable = false)
     private String url;
-    private String desc;
+    private String descricao;
 
     public Publicacao(){
-        
     }
 
-    @ManyToOne
-    //@JsonIgnore
-    @JoinColumn(name = "usuariaFk")
-    private Usuaria usuaria;
+    // @ManyToOne
+    // //@JsonIgnore
+    // @JoinColumn(name = "usuaria_id")
+    // private Usuaria usuaria;
 
 
-    public Publicacao(Long idPublicacao, String data, String url, String desc) {
+    public Publicacao(Long idPublicacao, String data, String url, String descricao) {
+        this.idPublicacao = idPublicacao;
         this.data = data;
         this.url = url;
-        this.desc = desc;
+        this.descricao = descricao;
     }
 
    
@@ -67,18 +57,17 @@ public class Publicacao {
         this.url = url;
     }
 
-    public String getDesc() {
-        return desc;
+    public String getdescricao() {
+        return descricao;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setdescricao(String descricao) {
+        this.descricao = descricao;
     }
 
     @Override
     public String toString() {
-        return "Publicacao [idPublicacao=" + idPublicacao + ", data=" + data + ", url=" + url + ", desc=" + desc
-                + ", usuaria=" + usuaria + "]";
+        return "data=" + data + ", url=" + url + ", descricao=" + descricao + "]";
     }
 
     
