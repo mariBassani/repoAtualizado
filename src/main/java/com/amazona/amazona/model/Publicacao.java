@@ -1,10 +1,6 @@
 package com.amazona.amazona.model;
 
-//import java.util.List;
-
-//import jakarta.persistence.*;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -12,36 +8,33 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "publicacao") //para garantir que a tabela vai ser criada com esse nome
 public class Publicacao {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idPublicacao;
-    //private Long usuariaFk;
     private String data;
     private String url;
-    private String desc;
-
-    public Publicacao(){
-        
-    }
+    private String descricao;
 
     @ManyToOne
-    //@JsonIgnore
     @JoinColumn(name = "usuariaFk")
+    @JsonBackReference
     private Usuaria usuaria;
 
 
-    public Publicacao(Long idPublicacao, String data, String url, String desc) {
+
+    // Construtores, getters e setters
+
+    public Publicacao() {}
+
+    public Publicacao(Long idPublicacao, String data, String url, String descricao) {
+        this.idPublicacao = idPublicacao;
         this.data = data;
         this.url = url;
-        this.desc = desc;
+        this.descricao = descricao;
     }
-
-   
 
     public Long getIdPublicacao() {
         return idPublicacao;
@@ -67,19 +60,25 @@ public class Publicacao {
         this.url = url;
     }
 
-    public String getDesc() {
-        return desc;
+    public String getdescricao() {
+        return descricao;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setdescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public Usuaria getUsuaria() {
+        return usuaria;
+    }
+
+    public void setUsuaria(Usuaria usuaria) {
+        this.usuaria = usuaria;
     }
 
     @Override
     public String toString() {
-        return "Publicacao [idPublicacao=" + idPublicacao + ", data=" + data + ", url=" + url + ", desc=" + desc
+        return "Publicacao [idPublicacao=" + idPublicacao + ", data=" + data + ", url=" + url + ", descricao=" + descricao
                 + ", usuaria=" + usuaria + "]";
     }
-
-    
 }
