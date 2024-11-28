@@ -1,4 +1,6 @@
 package com.amazona.amazona.model;
+import java.util.List;
+
 import jakarta.persistence.*;
 
 @Entity

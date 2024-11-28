@@ -6,7 +6,5 @@ import com.amazona.amazona.model.Publicacao;
 
 @Repository
 public interface PublicacaoRepository extends CrudRepository<Publicacao, Long>{
-    // @SuppressWarnings("unchecked")
-    // Publicacao save(Publicacao newPublicacao);
     
 }

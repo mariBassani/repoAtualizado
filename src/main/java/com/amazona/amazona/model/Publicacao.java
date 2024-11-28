@@ -4,15 +4,14 @@ package com.amazona.amazona.model;
 
 //import jakarta.persistence.*;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
 
 @Entity
 public class Publicacao {
@@ -23,7 +22,7 @@ public class Publicacao {
 
     @Column(nullable = false)
     private String url;
-    private String desc;
+    private String descricao;
 
     public Publicacao(){
         
@@ -35,7 +34,7 @@ public class Publicacao {
     private Usuaria usuaria;
 
 
-    public Publicacao(Long idPublicacao, String data, String url, String desc) {
+    public Publicacao(Long idPublicacao, String data, String url, String descricao) {
         this.data = data;
         this.url = url;
         this.descricao = descricao;
@@ -65,17 +64,17 @@ public class Publicacao {
         this.url = url;
     }
 
-    public String getdescricao() {
+    public String getDescricao() {
         return descricao;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
     @Override
     public String toString() {
-        return "Publicacao [idPublicacao=" + idPublicacao + ", data=" + data + ", url=" + url + ", desc=" + desc
+        return "Publicacao [idPublicacao=" + idPublicacao + ", data=" + data + ", url=" + url + ", descricao=" + descricao
                 + ", usuaria=" + usuaria + "]";
     }
 }
